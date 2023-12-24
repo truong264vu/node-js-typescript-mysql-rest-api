@@ -34,7 +34,7 @@ class TutorialRepository implements ITutorialRepository {
     let condition: string = "";
 
     if (searchParams?.published)
-      condition += "published = TRUE"
+      condition += "published = 1"
 
     if (searchParams?.title)
       condition += `LOWER(title) LIKE '%${searchParams.title}%'`
