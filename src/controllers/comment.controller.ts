@@ -2,9 +2,6 @@ import { Request, Response } from "express";
 import commentRepository from "../repositories/comment.repository";
 
 export default class CommentController {
-
- 
-
   async create (req:Request, res:Response) {
 
     const  checkCommentHaveTime = (nameHaveTime) => {
@@ -20,18 +17,18 @@ export default class CommentController {
         });
       }      
 
-      data.comments = data.comments.map( comment => {
-        return {
-          ...comment, 
-          fullName :  checkCommentHaveTime(comment.fullName),
-          replies: comment.replies.length != 0 ? comment.replies.map(rep => {
-            return {
-              ...rep,
-              fullName: checkCommentHaveTime(rep.fullName)
-            }
-          }) : []
-        }
-      })
+      // data.comments = data.comments.map( comment => {
+      //   return {
+      //     ...comment, 
+      //     fullName :  checkCommentHaveTime(comment.fullName),
+      //     replies: comment.replies.length != 0 ? comment.replies.map(rep => {
+      //       return {
+      //         ...rep,
+      //         fullName: checkCommentHaveTime(rep.fullName)
+      //       }
+      //     }) : []
+      //   }
+      // })
       const checkEmptyCommentParrent = await commentRepository.retrieveById(data.com_id);
 
       if (checkEmptyCommentParrent) {
@@ -59,13 +56,18 @@ export default class CommentController {
     try {
       const comment = await commentRepository.retrieveById(com_id);
 
-      if (comment) res.status(200).send(comment);
+      if (comment) res.status(200).send({
+        status: true,
+        data: comment
+      });
       else
-        res.status(404).send({
+        res.status(200).send({
+          status: false,
           message: `Cannot find comment with id=${com_id}.`
         });
     } catch (err) {
-      res.status(500).send({
+      res.status(200).send({
+        status: false,
         message: `Error retrieving comment with id=${com_id}.`
       });
     }

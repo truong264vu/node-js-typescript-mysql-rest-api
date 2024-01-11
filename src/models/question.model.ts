@@ -22,6 +22,7 @@ export default interface Question extends RowDataPacket {
   questions: Questions[];
   audio: Audio[];
   date: Date;
+  title: string;
   url_video: string;
   created_at: EpochTimeStamp;
 }
