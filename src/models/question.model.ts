@@ -7,6 +7,14 @@ interface Answer {
 interface Audio {
   id: number;
   text: string;
+  userAnswer: string;
+}
+
+interface NewWord {
+  id: number;
+  text: string;
+  dictionary: string;
+  userAnswer: string;
 }
 interface Questions {
   id: number;
@@ -21,6 +29,7 @@ export default interface Question extends RowDataPacket {
   id: number;
   questions: Questions[];
   audio: Audio[];
+  new_word: NewWord[];
   date: Date;
   title: string;
   url_video: string;

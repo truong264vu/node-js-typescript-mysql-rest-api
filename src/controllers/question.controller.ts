@@ -12,6 +12,12 @@ export default class QuestionController {
         });
       }
 
+      if (!newQuestions.new_word) {
+        return res.status(400).send({
+          message: "new word cannot be empty!"
+        });
+      }
+
       for (const question of newQuestions.questions) {
         if (!question.question) {
           return res.status(400).send({

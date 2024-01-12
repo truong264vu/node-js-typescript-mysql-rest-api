@@ -17,8 +17,8 @@ class QuestionRepository  implements IQuestionRepository {
   save(questions: Question): Promise<Question> {
     return new Promise((resolve, reject) => {
       connection.query<OkPacket>(
-      "INSERT INTO questions (questions, audio, date ,created_at, url_video, title) VALUES(?,?,?,?,?,?)",
-      [JSON.stringify(questions.questions), JSON.stringify(questions.audio), format(questions.date, 'yyyy-MM-dd'), new Date(), questions.url_video, questions.title],
+      "INSERT INTO questions (questions, audio, date , new_word, created_at, url_video, title) VALUES(?,?,?,?,?,?,?)",
+      [JSON.stringify(questions.questions), JSON.stringify(questions.audio), format(questions.date, 'yyyy-MM-dd'),  JSON.stringify(questions.new_word), new Date(), questions.url_video, questions.title],
       (err, res) => {
         if (err) reject(err);
         else
@@ -61,8 +61,8 @@ class QuestionRepository  implements IQuestionRepository {
   update(question: Question): Promise<number> {
     return new Promise((resolve, reject) => {
       connection.query<OkPacket>(
-        "UPDATE questions SET questions = ?, audio = ?, date = ?, url_video = ?, title = ? WHERE id = ?",
-        [JSON.stringify(question.questions), JSON.stringify(question.audio), format(question.date, 'yyyy-MM-dd'), question.url_video, question.title, question.id],
+        "UPDATE questions SET questions = ?, audio = ?, date = ?, url_video = ?, title = ?, new_word = ? WHERE id = ?",
+        [JSON.stringify(question.questions), JSON.stringify(question.audio), format(question.date, 'yyyy-MM-dd'), question.url_video, question.title, JSON.stringify(question.new_word),  question.id],
         (err, res) => {
           console.log(err);
           if (err) reject(err);
