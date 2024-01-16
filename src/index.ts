@@ -10,7 +10,7 @@ export default class Server {
 
   private config(app: Application): void {
     const corsOptions: CorsOptions = {
-      origin: "http://localhost:3000",  // Allow requests only from this origin
+      origin: "*",  // Allow requests only from this origin
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",  // Specify the allowed HTTP methods
       credentials: true,  // Include cookies and HTTP authentication headers with requests
       optionsSuccessStatus: 204,  // Set the status code for successful preflight requests
