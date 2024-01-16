@@ -8,4 +8,5 @@ export default interface User extends RowDataPacket {
   jti?: string;
   point?: number;
   created_at: EpochTimeStamp;
+  last_join_at: EpochTimeStamp;
 }

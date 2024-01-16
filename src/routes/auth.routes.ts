@@ -11,7 +11,11 @@ class Auth {
 
   intializeRoutes() {
     this.router.post("/login", this.controller.login);
+    this.router.post("/update-point", this.controller.updatePoint);
+    this.router.get("/user/:email", this.controller.getUser);
+    this.router.get("/users", this.controller.getUsers);
   }
+
 }
 
 export default new Auth().router;
