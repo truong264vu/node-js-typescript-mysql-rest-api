@@ -10,7 +10,8 @@ export default class Server {
 
   private config(app: Application): void {
     const corsOptions: CorsOptions = {
-      origin: ["http://localhost:3000", "https://english-daily.today"],  // Allow requests from these origins
+      origin: "https://english-daily.today",  // Allow requests from these origins
+      // origin: ["http://localhost:3000", "https://english-daily.today"],  // Allow requests from these origins
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       credentials: true,
       optionsSuccessStatus: 204,
