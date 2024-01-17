@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import cors from "cors";
+// import cors from "cors";
 import Routes from './routes';
 
 export default class Server {
@@ -10,12 +10,12 @@ export default class Server {
 
   private config(app: Application): void {
     // Allow all origins for debugging purposes
-    app.use(cors({
-      origin: 'http://localhost:3000',  // Replace with the actual origin of your frontend
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-      credentials: true,
-      optionsSuccessStatus: 204,
-    }));
+    // app.use(cors({
+    //   origin: 'http://localhost:3000',
+    //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    //   credentials: true,
+    //   optionsSuccessStatus: 204,
+    // }));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
   }
