@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import cors, { CorsOptions } from "cors";
+import cors from "cors";
 import Routes from './routes';
 
 export default class Server {
@@ -9,15 +9,8 @@ export default class Server {
   }
 
   private config(app: Application): void {
-    const corsOptions: CorsOptions = {
-      origin: "https://english-daily.today",  // Allow requests from these origins
-      // origin: ["http://localhost:3000", "https://english-daily.today"],  // Allow requests from these origins
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-      credentials: true,
-      optionsSuccessStatus: 204,
-    };
-
-    app.use(cors(corsOptions));
+    // Allow all origins for debugging purposes
+    app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
   }
