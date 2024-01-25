@@ -23,6 +23,6 @@ export default class Server {
       resave: true, 
       saveUninitialized: true, 
       secret: 'somesecret', 
-      cookie: { maxAge: 60000 }}));
+      cookie: { maxAge: null }}));
   }
 }
