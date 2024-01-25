@@ -76,7 +76,7 @@ class UserRepository  implements IUserRepository {
   update(users: User): Promise<number> {
     return new Promise((resolve, reject) => {
       connection.query<OkPacket>(
-        "UPDATE users SET jti = ?, name = ?, image = ?, last_joint_at = ? WHERE email = ?",
+        "UPDATE users SET jti = ?, name = ?, image = ?, last_join_at = ? WHERE email = ?",
         [users.jti, users.name, users.picture, users.email, new Date()],
         (err, res) => {
           console.log(err);

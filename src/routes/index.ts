@@ -6,6 +6,7 @@ import authRoutes from "./auth.routes";
 import commentRoutes from "./comment.routes";
 
 export default class Routes {
+
   constructor(app: Application) {
     app.use("/api", homeRoutes);
     app.use("/api/tutorials", tutorialRoutes);

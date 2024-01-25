@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import userRepository from "../repositories/user.repository";
 
 export default class AuthController {
-  async login (req:Request, res:Response) {
+  async login (req, res:Response) {
     try {
       const data = req.body;
       if (!data) {
@@ -17,10 +17,11 @@ export default class AuthController {
       } else {
         await userRepository.save(data);
       }
-
-
-      res.status(201).send({
-        message: 'Success'
+      req.session.role = checkEmptyUser?.role;
+      
+      res.status(200).send({
+        message: 'Success',
+        role: checkEmptyUser?.role
       });
 
     } catch (e) {
